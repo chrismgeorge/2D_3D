@@ -4,34 +4,19 @@ You can use the [editor on GitHub](https://github.com/chrismgeorge/2D_3D/edit/ma
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+## Image segmentation
+[Repo] (https://github.com/kazuto1011/deeplab-pytorch)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+This repo provides the ability to semantically segment a single image using a pre-trained model. It returns n images that each represent a specific class, with a mask over the specified location of a class. This is done by taking the masks found, and exporting the numpy array of the mask to another file, where a dictionary of the numpy array. The dictionary is marked by the labels of each mapping. A downside to using this image segmentation is that unique buildings are not inherently marked somehow, but rather every building would be marked under buildings.
 
-```markdown
-Syntax highlighted code block
+## Depth Mapping
+[Repo] (https://github.com/mrharicot/monodepth)
 
-# Header 1
-## Header 2
-### Header 3
+This repo provides the ability to get the depth mappings of a single image using a pre-trained model.
 
-- Bulleted
-- List
+### Combining _Image Segmentation & Depth Mapping_
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/chrismgeorge/2D_3D/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+The depth map produces a new image of the same width and height of the original image, but the pixels are representative of the depth at a particular pixel. Using that information, we could theoretically simply recreate a 3D image pixel by pixel in Maya, but that wouldn’t look right in any perspective, and create an ungodly amount of shapes within a scene. 
+To combat this, we can use image segmentation to pull out specific objects in a scene. With image segmentation, we can get the width, and height of whatever object is being represented, as well as the the average x, and y location of the object. We can also get the average rgb value by averaging every color for each segmented block. Then using the depth map on the same image, we can get it’s average depth. Thus we are able to recreate the average, x, y, z,  width, height, and color The only import attribute that is missing is depth of the created shape. This issue has yet to be addressed. 
+For each, object found in the image, we can recursively perform this same operation to produce to define the object even more. The deeper the recursion, the more defined your scene will be. 
+In the current format, I will just be saying that every object is a rectangle, but in the future it will be cool to find or create some kind of object → shape network to more closely recreate the scene.
