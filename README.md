@@ -5,12 +5,12 @@ You can use the [editor on GitHub](https://github.com/chrismgeorge/2D_3D/edit/ma
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ## Image segmentation
-[Repo] (https://github.com/kazuto1011/deeplab-pytorch)
+Repo (https://github.com/kazuto1011/deeplab-pytorch)
 
 This repo provides the ability to semantically segment a single image using a pre-trained model. It returns n images that each represent a specific class, with a mask over the specified location of a class. This is done by taking the masks found, and exporting the numpy array of the mask to another file, where a dictionary of the numpy array. The dictionary is marked by the labels of each mapping. A downside to using this image segmentation is that unique buildings are not inherently marked somehow, but rather every building would be marked under buildings.
 
 ## Depth Mapping
-[Repo] (https://github.com/mrharicot/monodepth)
+Repo (https://github.com/mrharicot/monodepth)
 
 This repo provides the ability to get the depth mappings of a single image using a pre-trained model.
 
