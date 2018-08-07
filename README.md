@@ -1,12 +1,23 @@
 ## Image segmentation
 Repo (https://github.com/kazuto1011/deeplab-pytorch)
 
+`
+python3 demo.py --config config/cocostuff164k.yaml --model-path ./pretrained_model/cocostuff164k_iter100k.pth --image-path ../all_image_data/nyc/nyc.jpg
+`
+
 This repo provides the ability to semantically segment a single image using a pre-trained model. It returns n images that each represent a specific class, with a mask over the specified location of a class. This is done by taking the masks found, and exporting the numpy array of the mask to another file, where a dictionary of the numpy array. The dictionary is marked by the labels of each mapping. A downside to using this image segmentation is that unique buildings are not inherently marked somehow, but rather every building would be marked under buildings.
 
 ## Depth Mapping
 Repo (https://github.com/mrharicot/monodepth)
 
+Note that I have modified this repo slightly to automatically place the outputted files (depth array, and depth image) into their respective image directories. For example, I use the following command to place all the files associated with the depth of a picture in the same directory. 
+`
+python3 monodepth_simple.py --image_path ../all_image_data/nyc/nyc.jpg --checkpoint_path ./models/model_cityscapes/model_cityscapes
+`
+
 This repo provides the ability to get the depth mappings of a single image using a pre-trained model.
+
+
 
 ## Combining _Image Segmentation & Depth Mapping_
 
