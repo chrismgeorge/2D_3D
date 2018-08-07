@@ -18,20 +18,18 @@ dictPath = './all_image_data/school/school_depth_array.npy'
 with open(dictPath, 'rb') as file:
     depthData = numpy.load(file, fix_imports=True, encoding="ASCII")
 
-# print(segmentedData)
-# print(depthData)
-
-print("depth rows", len(depthData.tolist()))
-print("depth cols", len(depthData.tolist()[0]))
 segmentedData = dict(numpy.ndenumerate(segmentedData))
 
 # because of weird numpy translation
 for fakeKey in segmentedData:
     trueSegmentedData = segmentedData[fakeKey]
     for realKey in trueSegmentedData:
-        print("segmented cols", len(trueSegmentedData[realKey].tolist()))
-        print("segmented rows", len(trueSegmentedData[realKey].tolist()[0]))
-        break
+        depthOfObject = depthData * trueSegmentedData[realKey]
+        totalDepth = numpy.sum(depthOfObject)
+        totalPoints = numpy.sum(trueSegmentedData[realKey])
+        averageDepth = totalDepth / totalPoints
+        print(realKey, "average depth", averageDepth)
     break
+
 
 
