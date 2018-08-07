@@ -1,0 +1,7 @@
+on an image
+2048 × 1152
+
+depth rows 256
+depth cols 512
+segmented cols 289
+segmented rows 513
