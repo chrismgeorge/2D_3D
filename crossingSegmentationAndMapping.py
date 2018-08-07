@@ -33,29 +33,47 @@ for fakeKey in segmentedData:
         totalDepth = numpy.sum(depthOfObject)
         totalPoints = numpy.sum(trueSegmentedData[realKey])
 
-        averageWidth = 0
-        averageHeight = 0
-        averageX = 0
-        averageY = 0
         averageZ = totalDepth / totalPoints
 
         # get the average rgb value
         rgb = [0, 0, 0]
+        # x = cols
+        # y = rows
+        smallestX = -1
+        smallestY = -1
+        largestX = -1
+        largestY = -1
         for row in range(len(trueSegmentedData[realKey].tolist())):
             for col in range(len(trueSegmentedData[realKey][0].tolist())):
                 if (numpy.sum(trueSegmentedData[realKey][row] != 0)):
-                    if (numpy.sum(trueSegmentedData[realKey][row, col] != 0)):
+                    val = trueSegmentedData[realKey][row, col]
+                    if (val != 0):
                         # pic gets gbr
                         rgb[0] += pic[row, col, 2]
                         rgb[1] += pic[row, col, 1]
                         rgb[2] += pic[row, col, 0]
+                        if (smallestX == -1):
+                            smallestX = col
+                            largestX = col
+                            smallestY = row
+                            largestY = row
+                        else:
+                            smallestX = min(smallestX, col)
+                            largestX = max(largestX, col)
+                            smallestY = min(smallestY, row)
+                            largestY = max(largestY, row)
+
+        centerX = (largestX + smallestX) / 2
+        centerY = (largestY + smallestY) / 2
+        totalWidth = largestX - smallestX
+        totalHeight = largestY - smallestY
 
         # average out the colors
         rgb[0] = rgb[0] / totalPoints
         rgb[1] = rgb[1] / totalPoints
         rgb[2] = rgb[2] / totalPoints
 
-        objects[realKey] = ['Cube', averageWidth, averageHeight, averageX, averageY, averageZ, rgb]
+        objects[realKey] = ['Cube', totalWidth, totalHeight, centerX, centerY, averageZ, rgb]
 
     # write new dictionary to the file with maya information
     with open('./all_image_data/school/school_maya_input.txt', 'w') as file:
