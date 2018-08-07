@@ -33,3 +33,4 @@ In the current format, I will just be saying that every object is a rectangle, b
 - I have yet to figure out why all the averaged colors are greyish.
 - I have yet to make new images of the already segmented images and then segment those images further.
 - I have yet to match the segmented object to the correct Maya shape.
+- Find way to optimize getting the x, y, width, height, and color. ~2-3 mins for big pics right now
