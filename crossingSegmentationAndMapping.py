@@ -54,7 +54,12 @@ for fakeKey in segmentedData:
         rgb[0] = rgb[0] / totalPoints
         rgb[1] = rgb[1] / totalPoints
         rgb[2] = rgb[2] / totalPoints
-        print(rgb)
-        objects[realKey] = [averageWidth, averageHeight, averageX, averageY, averageZ, rgb]
+
+        objects[realKey] = ['Cube', averageWidth, averageHeight, averageX, averageY, averageZ, rgb]
+
+    # write new dictionary to the file with maya information
+    with open('./all_image_data/school/school_maya_input.txt', 'w') as file:
+        file.write(str(objects))
+        file.truncate()
 
 
