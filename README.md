@@ -1,6 +1,7 @@
 ## Image segmentation
 Repo (https://github.com/kazuto1011/deeplab-pytorch)
 
+This repo has been modified locally to output a dictionary of numpy arrays of the same size as the original image to all_image_data/folderName.
 `
 python3 demo.py --config config/cocostuff164k.yaml --model-path ./pretrained_model/cocostuff164k_iter100k.pth --image-path ../all_image_data/nyc/nyc.jpg
 `
@@ -10,7 +11,7 @@ This repo provides the ability to semantically segment a single image using a pr
 ## Depth Mapping
 Repo (https://github.com/mrharicot/monodepth)
 
-Note that I have modified this repo slightly to automatically place the outputted files (depth array, and depth image) into their respective image directories. For example, I use the following command to place all the files associated with the depth of a picture in the same directory. 
+This repo has been modified locally to output a numpy array of the image representing the original image, and a png the size of the original image, with colors representing the depths to all_image_data/folderName.
 `
 python3 monodepth_simple.py --image_path ../all_image_data/nyc/nyc.jpg --checkpoint_path ./models/model_cityscapes/model_cityscapes
 `
