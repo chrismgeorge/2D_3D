@@ -2,7 +2,7 @@
 Repo (https://github.com/kazuto1011/deeplab-pytorch)
 
 `
-python demo.py --config config/cocostuff164k.yaml --model-path <PATH TO MODEL> --image-path <PATH TO IMAGE>
+python3 demo.py --config config/cocostuff164k.yaml --model-path ./pretrained_model/cocostuff164k_iter100k.pth --image-path ../all_image_data/nyc/nyc.jpg
 `
 
 This repo provides the ability to semantically segment a single image using a pre-trained model. It returns n images that each represent a specific class, with a mask over the specified location of a class. This is done by taking the masks found, and exporting the numpy array of the mask to another file, where a dictionary of the numpy array. The dictionary is marked by the labels of each mapping. A downside to using this image segmentation is that unique buildings are not inherently marked somehow, but rather every building would be marked under buildings.
