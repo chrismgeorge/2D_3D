@@ -26,3 +26,10 @@ The depth map produces a new image of the same width and height of the original 
 To combat this, we can use image segmentation to pull out specific objects in a scene. With image segmentation, we can get the width, and height of whatever object is being represented, as well as the the average x, and y location of the object. We can also get the average rgb value by averaging every color for each segmented block. Then using the depth map on the same image, we can get it’s average depth. Thus we are able to recreate the average, x, y, z,  width, height, and color The only import attribute that is missing is depth of the created shape. This issue has yet to be addressed. 
 For each, object found in the image, we can recursively perform this same operation to produce to define the object even more. The deeper the recursion, the more defined your scene will be. 
 In the current format, I will just be saying that every object is a rectangle, but in the future it will be cool to find or create some kind of object → shape network to more closely recreate the scene.
+
+
+### To be done
+
+- I have yet to figure out why all the averaged colors are greyish.
+- I have yet to make new images of the already segmented images and then segment those images further.
+- I have yet to match the segmented object to the correct Maya shape.
