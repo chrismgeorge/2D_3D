@@ -5,8 +5,14 @@ This repo provides the ability to semantically segment a single image using a pr
 
 ## Depth Mapping
 Repo (https://github.com/mrharicot/monodepth)
+### Note that I have modified these repos slightly
+`
+python3 monodepth_simple.py --image_path ./nyc.jpg --checkpoint_path ./models/model_cityscapes/model_cityscapes
+`
 
 This repo provides the ability to get the depth mappings of a single image using a pre-trained model.
+
+
 
 ## Combining _Image Segmentation & Depth Mapping_
 
